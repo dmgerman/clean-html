@@ -24,12 +24,11 @@ Assume the following html file:
 </html>
 #+end_example
 
-which would be displayed as:
 
-#+BEGIN_EXPORT html :exports both
+#+BEGIN_HTML
 <p>　ずいぶん<ruby>前<rt>まえ</rt></ruby>に、<ruby>外<rt>がい</rt>国<rt>こく</rt></ruby>で<ruby>書<rt>か</rt></ruby>かれたお<ruby>話<rt>はなし</rt></ruby>なのに、ハイジの<ruby>物<rt>もの</rt>語<rt>がたり</rt></ruby>はちっとも<ruby>古<rt>ふる</rt></ruby>ぼけてはいません。</p>
 <p><ruby>今<rt>いま</rt></ruby><ruby>読<rt>よ</rt></ruby>んでも、ハイジの<ruby>心<rt>こころ</rt></ruby>の<ruby>動<rt>うご</rt></ruby>きがひしひしとつたわってきます。</p>
-#+END_EXPORT
+#+END_HTML
 
 * clean-ruby.py
 
@@ -45,7 +44,6 @@ It does it by replacing all the ruby tags with their content but without the rt 
 
 #+end_example
 
-which would be display as:
 
 #+begin_export html
 <p>　ずいぶん前に、外国で書かれたお話なのに、ハイジの物語はちっとも古ぼけてはいません。</p>
