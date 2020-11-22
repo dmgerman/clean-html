@@ -24,6 +24,7 @@ Assume the following html file:
 </html>
 #+end_example
 
+it will be displayed as:
 
 #+BEGIN_HTML
 <p>　ずいぶん<ruby>前<rt>まえ</rt></ruby>に、<ruby>外<rt>がい</rt>国<rt>こく</rt></ruby>で<ruby>書<rt>か</rt></ruby>かれたお<ruby>話<rt>はなし</rt></ruby>なのに、ハイジの<ruby>物<rt>もの</rt>語<rt>がたり</rt></ruby>はちっとも<ruby>古<rt>ふる</rt></ruby>ぼけてはいません。</p>
@@ -44,11 +45,13 @@ It does it by replacing all the ruby tags with their content but without the rt 
 
 #+end_example
 
+it will be displayed as:
 
-#+begin_export html
+
+#+begin_HTML
 <p>　ずいぶん前に、外国で書かれたお話なのに、ハイジの物語はちっとも古ぼけてはいません。</p>
 <p>今読んでも、ハイジの心の動きがひしひしとつたわってきます。</p>
-#+end_export
+#+end_HTML
 
 * clean-html.py
 
