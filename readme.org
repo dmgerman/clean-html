@@ -31,9 +31,10 @@ which would be display as:
 <p><ruby>今<rt>いま</rt></ruby><ruby>読<rt>よ</rt></ruby>んでも、ハイジの<ruby>心<rt>こころ</rt></ruby>の<ruby>動<rt>うご</rt></ruby>きがひしひしとつたわってきます。</p>
 #+end_export
 
-* [clean-ruby.py]
+* clean-ruby.py
 
-This script replaces all the ruby tags with their content but without the rt tag. Thus, it will create the following file:
+This script removes the furigana from the file. 
+It does it by replacing all the ruby tags with their content but without the rt tag. Thus, it will create the following file:
 
 #+begin_example
 <html>
@@ -51,7 +52,7 @@ which would be display as:
 <p>今読んでも、ハイジの心の動きがひしひしとつたわってきます。</p>
 #+end_export
 
-* [clean-html.py]
+* clean-html.py
 
 This script removes most tags from the input and outputs the text inside <p> tags only (nothing else). Thus the output is:
 
@@ -64,3 +65,12 @@ This script removes most tags from the input and outputs the text inside <p> tag
 * requirements
 
 Beautiful Soup library.
+
+* how to run
+
+simply run the script with the name of the file you want to process. It will print the output to stdout, which you can redirect to a file:
+
+  #+begin_src sh
+python3 clean-html.py <filename>
+python3 clean-ruby.py <filename>
+  #+end_src
