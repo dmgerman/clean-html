@@ -1,0 +1,66 @@
+#+STARTUP: showall
+#+STARTUP: lognotestate
+#+TAGS: research(r) uvic(u) today(y) todo(t) cooking(c)
+#+SEQ_TODO: TODO(t) STARTED(s) DEFERRED(r) CANCELLED(c) | WAITING(w) DELEGATED(d) APPT(a) DONE(d)
+#+DRAWERS: HIDDEN STATE
+#+ARCHIVE: %s_done::
+#+TITLE: Scripts to remove furigana from HTML
+#+CATEGORY: 
+#+PROPERTY: header-args:sql             :engine postgresql  :exports both :cmdline csc370
+#+PROPERTY: header-args:sqlite          :db /path/to/db  :colnames yes
+#+PROPERTY: header-args:C++             :results output :flags -std=c++17 -Wall --pedantic -Werror
+#+PROPERTY: header-args:R               :results output  :colnames yes
+#+OPTIONS: ^:nil
+
+These scripts remove furigana from an HTML file.
+
+Assume the following html file:
+
+#+begin_example
+<html>
+<body>
+<p>　ずいぶん<ruby>前<rt>まえ</rt></ruby>に、<ruby>外<rt>がい</rt>国<rt>こく</rt></ruby>で<ruby>書<rt>か</rt></ruby>かれたお<ruby>話<rt>はなし</rt></ruby>なのに、ハイジの<ruby>物<rt>もの</rt>語<rt>がたり</rt></ruby>はちっとも<ruby>古<rt>ふる</rt></ruby>ぼけてはいません。</p>
+<p><ruby>今<rt>いま</rt></ruby><ruby>読<rt>よ</rt></ruby>んでも、ハイジの<ruby>心<rt>こころ</rt></ruby>の<ruby>動<rt>うご</rt></ruby>きがひしひしとつたわってきます。</p>
+</html>
+#+end_example
+
+which would be display as:
+
+#+begin_export html
+<p>　ずいぶん<ruby>前<rt>まえ</rt></ruby>に、<ruby>外<rt>がい</rt>国<rt>こく</rt></ruby>で<ruby>書<rt>か</rt></ruby>かれたお<ruby>話<rt>はなし</rt></ruby>なのに、ハイジの<ruby>物<rt>もの</rt>語<rt>がたり</rt></ruby>はちっとも<ruby>古<rt>ふる</rt></ruby>ぼけてはいません。</p>
+<p><ruby>今<rt>いま</rt></ruby><ruby>読<rt>よ</rt></ruby>んでも、ハイジの<ruby>心<rt>こころ</rt></ruby>の<ruby>動<rt>うご</rt></ruby>きがひしひしとつたわってきます。</p>
+#+end_export
+
+* [clean-ruby.py]
+
+This script replaces all the ruby tags with their content but without the rt tag. Thus, it will create the following file:
+
+#+begin_example
+<html>
+<body>
+<p>　ずいぶん前に、外国で書かれたお話なのに、ハイジの物語はちっとも古ぼけてはいません。</p>
+<p>今読んでも、ハイジの心の動きがひしひしとつたわってきます。</p>
+</body></html>
+
+#+end_example
+
+which would be display as:
+
+#+begin_export html
+<p>　ずいぶん前に、外国で書かれたお話なのに、ハイジの物語はちっとも古ぼけてはいません。</p>
+<p>今読んでも、ハイジの心の動きがひしひしとつたわってきます。</p>
+#+end_export
+
+* [clean-html.py]
+
+This script removes most tags from the input and outputs the text inside <p> tags only (nothing else). Thus the output is:
+
+#+begin_example
+　ずいぶん前に、外国で書かれたお話なのに、ハイジの物語はちっとも古ぼけてはいません。
+今読んでも、ハイジの心の動きがひしひしとつたわってきます。
+#+end_example
+
+
+* requirements
+
+Beautiful Soup library.
